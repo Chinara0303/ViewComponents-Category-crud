@@ -24,11 +24,11 @@ namespace Practice.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Instagram> Instagrams { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<Social> Socials { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasQueryFilter(p => !p.SoftDelete);
-            modelBuilder.Entity<Blog>().HasQueryFilter(p => !p.SoftDelete);
             modelBuilder.Entity<Blog>().HasQueryFilter(p => !p.SoftDelete);
             modelBuilder.Entity<BlogHeader>().HasQueryFilter(p => !p.SoftDelete);
             modelBuilder.Entity<Category>().HasQueryFilter(p => !p.SoftDelete);
@@ -37,14 +37,20 @@ namespace Practice.Data
             modelBuilder.Entity<Instagram>().HasQueryFilter(p => !p.SoftDelete);
             modelBuilder.Entity<Slider>().HasQueryFilter(p => !p.SoftDelete);
             modelBuilder.Entity<Author>().HasQueryFilter(p => !p.SoftDelete);
-            modelBuilder.Entity<BlogHeader>().HasQueryFilter(p => !p.SoftDelete);
             modelBuilder.Entity<Subscribe>().HasQueryFilter(p => !p.SoftDelete);
 
-            modelBuilder.Entity<Setting>().HasData(new Setting
+            modelBuilder.Entity<Setting>().HasData(
+            new Setting
             {
-                Id=1,
+                Id = 1,
                 Key = "HeaderLogo",
                 Value = "logo.png"
+            },
+            new Setting
+            {
+                Id = 2,
+                Key = "CardLogo",
+                Value = "footer-bottom-1.png"
             });
         }
 

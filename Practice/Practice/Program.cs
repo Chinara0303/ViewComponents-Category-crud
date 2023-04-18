@@ -17,6 +17,8 @@ builder.Services.AddScoped<ILayoutService, LayoutService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IExpertService, ExpertService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IFooterService, FooterService>();
 
 
 var app = builder.Build();

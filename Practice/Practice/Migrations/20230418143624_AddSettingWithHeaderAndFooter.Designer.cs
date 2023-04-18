@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Practice.Data;
 
@@ -11,9 +12,10 @@ using Practice.Data;
 namespace Practice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230418143624_AddSettingWithHeaderAndFooter")]
+    partial class AddSettingWithHeaderAndFooter
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -374,9 +376,16 @@ namespace Practice.Migrations
                         new
                         {
                             Id = 2,
-                            Key = "CardLogo",
+                            Key = "LdSocial",
                             SoftDelete = false,
-                            Value = "footer-bottom-1.png"
+                            Value = "LINKEDIN"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Key = "FbSocial",
+                            SoftDelete = false,
+                            Value = "FACEBOOK"
                         });
                 });
 
@@ -422,28 +431,6 @@ namespace Practice.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SliderInfos");
-                });
-
-            modelBuilder.Entity("Practice.Models.Social", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Link")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("SoftDelete")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Socials");
                 });
 
             modelBuilder.Entity("Practice.Models.Subscribe", b =>

@@ -1,4 +1,6 @@
-﻿namespace Practice.ViewModels.Layout
+﻿using Practice.Models;
+
+namespace Practice.ViewModels.Layout
 {
     public class LayoutVM
     {

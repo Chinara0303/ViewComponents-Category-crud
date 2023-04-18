@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Practice.Data;
+using Practice.Models;
 using Practice.Services.Interfaces;
 using Practice.ViewModels.Basket;
 using Practice.ViewModels.Layout;
@@ -29,17 +31,15 @@ namespace Practice.Services
             _httpContextAccessor.HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(baskets));
         }
 
-  
-
         public LayoutVM GetSettingDatas()
         {
             Dictionary<string, string> settings = _context.Settings
                 .AsEnumerable()
-                .ToDictionary(s=>s.Key,s=>s.Value);
+                .ToDictionary(s => s.Key, s => s.Value);
           
             return new LayoutVM {
                 Settings = settings,
-                BasketCount = _basketService.GetDatasFromCookie().Count()
+                BasketCount = _basketService.GetDatasFromCookie().Count(),
             };
         }
     }
